@@ -37,12 +37,10 @@ class MainActivity : AppCompatActivity() {
         } else if (num_View3.text.isEmpty() && num_View1.text.toString() != number && num_View2.text.toString() != number) {  // Check if the number is not same as the first and second ones.
             num_View3.text = number
         } else {
-            // If it's a duplicate entry
             if(number == num_View1.text.toString() || number == num_View2.text.toString()) {
                 Toast.makeText(this, "같은 숫자는 사용할 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
 
-            // If all text views are filled already
             else {
                 Toast.makeText(this, "숫자가 가득 찼습니다.", Toast.LENGTH_SHORT).show()
             }
@@ -100,14 +98,13 @@ class MainActivity : AppCompatActivity() {
             val userNumbers = listOf(num_View1.text.toString().toInt(), num_View2.text.toString().toInt(), num_View3.text.toString().toInt())
             val result = checkNumbers(userNumbers, randomNumbers)
 
-            // Clear the TextViews after getting the user numbers.
             num_View1.text = ""
             num_View2.text = ""
             num_View3.text = ""
 
-            if (result.first == 3) { // 3 strikes - success
+            if (result.first == 3) {
                 Toast.makeText(this, "축하합니다! 세개를 다 맞추셨습니다.", Toast.LENGTH_SHORT).show()
-            } else { // not yet succeeded
+            } else {
                 val newFragment = MyFragment.newInstance(
                     fragmentCount + 1,
                     userNumbers.joinToString(""),
@@ -128,7 +125,6 @@ class MainActivity : AppCompatActivity() {
                 number++
                 output.setText(number.toString())
 
-                // Add the newly created FrameLayout to the container.
                 fragmentContainer.addView(newFrameLayout)
 
                 supportFragmentManager.beginTransaction()
@@ -145,9 +141,9 @@ class MainActivity : AppCompatActivity() {
         var balls = 0
 
         for ((index, number) in user.withIndex()) {
-            if (number == random[index]) { // same position - strike
+            if (number == random[index]) {
                 strikes++
-            } else if (random.contains(number)) { // different position - ball
+            } else if (random.contains(number)) {
                 balls++
             }
         }

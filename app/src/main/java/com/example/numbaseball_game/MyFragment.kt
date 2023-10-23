@@ -45,10 +45,8 @@ class MyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_push, container, false)
 
-        // Get TextViews from your layout.
         val numbersTextView = view.findViewById<TextView>(R.id.numbersTextView)
         val resultTextView = view.findViewById<TextView>(R.id.resultTextView)
 
